@@ -1,0 +1,27 @@
+<h1>Angular Tree View Demo</h1>
+
+<div class="add-node-form">
+  <input type="text" [(ngModel)]="newNodeName" *ngIf="selectedNode" placeholder="New child node name">
+  <button (click)="addNode()" *ngIf="selectedNode">Add a Node to {{selectedNode.name}}</button>
+   <button (click)="resetTree()">Reset Tree</button>
+</div>
+
+<div class="tree-container">
+  <app-tree-view 
+    [nodes]="treeData"
+    [highlightNode]="highlightNode"
+    (nodeExpanded)="onNodeExpanded($event)"
+    (nodeCollapsed)="onNodeCollapsed($event)"
+    (nodeClicked)="onNodeClicked($event)"
+    (nodeDoubleClicked)="onNodeDoubleClicked($event)"
+  ></app-tree-view>
+</div>
+
+
+
+<div class="event-log">
+  <h2>Event Log</h2>
+  <ul>
+    <li *ngFor="let event of eventLog">{{ event }}</li>
+  </ul>
+</div>

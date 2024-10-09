@@ -1,0 +1,64 @@
+.demo-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.demo-controls {
+  margin-bottom: 20px;
+}
+
+.demo-controls button {
+  margin-right: 10px;
+}
+
+.tree-container {
+  padding: 20px;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+}
+
+.add-node-form {
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.add-node-form input {
+  display: block;
+  margin-bottom: 10px;
+  padding: 5px;
+  width: 100%;
+}
+
+.add-node-form button {
+  margin-right: 10px;
+}
+
+.event-log {
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+}
+
+.event-log ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.event-log li {
+  margin-bottom: 5px;
+}
+
+// Custom variables to override tree-view component styles
+::ng-deep app-tree-view {
+  --tree-view-hover-bg-color: #e6f7ff;
+  --tree-view-expanded-bg-color: #bae7ff;
+  --tree-view-expanded-text-color: #0050b3;
+  --tree-view-highlighted-bg-color: #1890ff;
+  --tree-view-highlighted-text-color: #ffffff;
+  --tree-view-action-button-color: #8c8c8c;
+  --tree-view-action-button-hover-color: #1890ff;
+}

@@ -1,0 +1,37 @@
+<ul class="tree-view">
+  <li *ngFor="let node of nodes">
+    <div class="node-container">
+      <div class="title-container"
+        [class.cursor-pointer]="!node.disabled" 
+        [class.cursor-disabled]="node.disabled"
+        [class.expandable]="node.children && node.children.length > 0"
+        [class.expanded]="node.expanded"
+        [class.highlighted]="isHighlighted(node)"
+        (click)="onNodeClick(node)"
+        (dblclick)="onNodeDoubleClick(node, $event)"
+        [title]="node.tooltip || ''"
+      >
+        <i class="fa-fw" [ngClass]="getNodeIcon(node)"></i>
+        <span>{{ node.name }}</span>
+        <span *ngIf="node.showChildCount && node.children">({{ node.children.length }})</span>
+      </div>
+      <div class="node-actions" *ngIf="node.actions?.add || node.actions?.delete">
+        <button class="action-button" *ngIf="node.actions?.add" title="Add a new item"
+          (click)="onAddClick(node)"><i class="fas fa-plus"></i></button>
+        <button class="action-button" *ngIf="node.actions?.delete" title="Delete this item"
+          (click)="onRemoveClick(node)"><i class="fa-regular fa-trash-can"></i></button>
+      </div>
+    </div>
+    <app-tree-view
+      *ngIf="node.children && node.children.length > 0 && node.expanded"
+      [nodes]="node.children"
+      [highlightNode]="highlightNode"
+      (nodeExpanded)="onChildNodeExpanded($event)"
+      (nodeCollapsed)="onChildNodeCollapsed($event)"
+      (nodeClicked)="onChildNodeClicked($event)"
+      (nodeDoubleClicked)="onChildNodeDoubleClicked($event)"
+      (nodeAdded)="onChildNodeAdded($event)"
+      (nodeRemoved)="onChildNodeRemoved($event)"
+    ></app-tree-view>
+  </li>
+</ul>
