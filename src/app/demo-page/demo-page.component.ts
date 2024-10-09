@@ -27,7 +27,7 @@ export class DemoPageComponent implements OnInit {
       {
         id: '1',
         name: 'Root',
-        icon: 'fa-solid fa-folder-tree',
+        icon: {collapsed:'fa-solid fa-chevron-right',expanded:'fa-solid fa-chevron-down'},
         expanded: true,
         actions:{add:true,delete:true},
         showChildCount:true,
@@ -91,12 +91,11 @@ export class DemoPageComponent implements OnInit {
       }
       const newNode: TreeNode = {
         id: `new-${Date.now()}`,
-        name: this.newNodeName,
-        icon: 'fa-regular fa-file'
+        name: this.newNodeName
       };
       this.selectedNode.children.push(newNode);
       this.selectedNode.expanded = true;
-      this.selectedNode.icon = 'fa-solid fa-folder';
+      this.selectedNode.icon = undefined;
       this.newNodeName = '';
       this.logEvent(`New node added: ${newNode.name}`);
     }else{

@@ -7,7 +7,10 @@ export interface TreeNode {
   children?: TreeNode[];
   expanded?: boolean;
   tooltip?: string;
-  icon?: string;
+  /**
+   * Provide specific icon for expanded and collapsed state. Or just provide a string for both states.
+   */
+  icon?: {expanded?:string,collapsed?:string} | string,
   disabled?:boolean;
   showChildCount?:boolean;
   actions?:{add?:boolean,delete?:boolean};
@@ -62,7 +65,14 @@ export class TreeViewComponent {
 
   getNodeIcon(node: TreeNode): string {
     if (node.icon) {
-      return node.icon;
+      const icon:any = node.icon;
+      if(node.expanded && icon?.expanded){
+        return icon.expanded;
+      }else if(!node.expanded && icon?.collapsed){
+        return icon.collapsed;
+      }else{
+        return icon;
+      }
     }
     if (node.children && node.children.length > 0) {
       return node.expanded ? 'fa-regular fa-folder-open' : 'fa-regular fa-folder';
