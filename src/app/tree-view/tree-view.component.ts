@@ -23,6 +23,7 @@ export interface TreeNode {
 export class TreeViewComponent {
   @Input() nodes: TreeNode[] = [];
   @Input() highlightNode: TreeNode | null = null;
+  @Input() highlightExpandedNodes = false;
   @Output() nodeExpanded = new EventEmitter<TreeNode>();
   @Output() nodeCollapsed = new EventEmitter<TreeNode>();
   @Output() nodeClicked = new EventEmitter<TreeNode>();
@@ -57,10 +58,6 @@ export class TreeViewComponent {
         this.nodeCollapsed.emit(node);
       }
     }
-  }
-
-  isHighlighted(node: TreeNode): boolean {
-    return this.highlightNode !== null && node.id === this.highlightNode.id;
   }
 
   getNodeIcon(node: TreeNode): string {
