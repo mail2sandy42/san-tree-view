@@ -27,7 +27,7 @@ export class DemoPageComponent implements OnInit {
       {
         id: '1',
         name: 'Root',
-        icon: 'fa-solid fa-folder',
+        icon: 'fa-solid fa-folder-tree',
         expanded: true,
         actions:{add:true,delete:true},
         showChildCount:true,
@@ -35,29 +35,26 @@ export class DemoPageComponent implements OnInit {
           {
             id: '2',
             name: 'Child 1',
-            icon: 'fa-solid fa-folder',
             expanded: true,
             actions:{add:true,delete:true},
             showChildCount:true,
             children: [
-              { id: '5', name: 'Grandchild 1', icon: 'fa-regular fa-file' },
-              { id: '6', name: 'Grandchild 2', icon: 'fa-regular fa-file' }
+              { id: '5', name: 'Grandchild 1' },
+              { id: '6', name: 'Grandchild 2' }
             ]
           },
           {
             id: '3',
             name: 'Child 2',
-            icon: 'fa-solid fa-folder',
             actions:{add:false,delete:true},
             children: [
-              { id: '7', name: 'Grandchild 3', icon: 'fa-regular fa-file' },
-              { id: '8', name: 'Grandchild 4', icon: 'fa-regular fa-file' }
+              { id: '7', name: 'Grandchild 3' },
+              { id: '8', name: 'Grandchild 4', icon: 'fa-regular fa-file-pdf' }
             ]
           },
           { 
             id: '4', 
             name: 'Child 3', 
-            icon: 'fa-solid fa-folder',
             tooltip: 'This is Child 3',
             disabled: true
           }
